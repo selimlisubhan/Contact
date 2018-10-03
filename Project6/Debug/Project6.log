@@ -1,0 +1,8 @@
+﻿  main.cpp
+  Kaynak.cpp
+c:\users\acer\source\repos\project6\project6\kaynak.cpp(135): warning C4566: character represented by universal-character-name '\u043E' cannot be represented in the current code page (1254)
+c:\users\acer\source\repos\project6\project6\kaynak.cpp(150): warning C4566: character represented by universal-character-name '\u043E' cannot be represented in the current code page (1254)
+c:\users\acer\source\repos\project6\project6\kaynak.cpp(167): warning C4566: character represented by universal-character-name '\u043E' cannot be represented in the current code page (1254)
+  Generating Code...
+c:\users\acer\source\repos\project6\project6\kaynak.cpp(107): warning C4715: 'EditContactNumber': not all control paths return a value
+  Project6.vcxproj -> C:\Users\Acer\source\repos\Project6\Debug\Project6.exe
