@@ -40,9 +40,9 @@ int main()
 			cout << "Enter phone number (10 digits): " << endl;
 			cin.getline(n_contact.phone, 15);
 
-			AddContact(Kontakt, size, count, n_contact);  //Yazılmış məlumatları kontakta əlavə edir
+			AddContact(Kontakt, size, count, n_contact);  //Adds recorded information to contacts
 			break;
-		case '2': //Sıra nömrəsinə görə kontaktı redaktə etmək
+		case '2': //Edit contact according to row number
 			cout << "Enter the number of contact for edit: (0 - Number, else - break)" << endl;
 			cin >> ContactNumber;
 			cin.ignore();
@@ -50,18 +50,18 @@ int main()
 			{
 				int index1;
 				cout << "Enter the contact id : ";
-				if (cin >> index1 && (cin.ignore(), EditContactNumber(Kontakt, count, index1)))  //Redaktə etmək üçün kontaktın nömrəsi yazılır və edit uğurlu olduqda true qaytarır
+				if (cin >> index1 && (cin.ignore(), EditContactNumber(Kontakt, count, index1)))  //Write a contact's number to edit and returns true if the edit is successful
 				{
 					cout << "Contact has been successfully updated." << endl;
 				}
-				else//daxil edilən kontakt nömrəsi uğursuzdursa bu
+				else //If the included contact number fails
 				{
 					cout << "Invalid contact id or the contact record does not exist. Please try again." << endl; 
 					Beep(2213, 1000);
 				}
 			}
 			break;
-		case '3': //Ada, kontakt nömrəsinə və ya soyadına görə kontkaktı silir 
+		case '3': //The deletes the property by its contact number or surname
 			cout << "Please choise: can you delete contact with name (0) , number (1) or  surname (2) ?" << endl;
 			cin >> ContactNumber;
 			cin.ignore();
@@ -70,7 +70,7 @@ int main()
 				char Name[30];
 				cout << "Enter name: " << endl;
 				cin.getline(Name, 30);
-				DeleteContactName(Kontakt, count, size, Name); //Ada görə kontaktın silinməsi
+				DeleteContactName(Kontakt, count, size, Name); //deletion of contact with name
 			}
 			else if (ContactNumber == 1)
 			{
@@ -83,43 +83,43 @@ int main()
 					Beep(2213, 1000);
 					break;
 				}
-				DeleteContactNumber(Kontakt, count, size, ContactNumber - 1); //kontakt nömrəsinə görə kontaktın silinməsi
+				DeleteContactNumber(Kontakt, count, size, ContactNumber - 1); //deleting contact with contact number
 			}
 			else if (ContactNumber == 2)
 			{
 				char sName[30];
 				cout << "Enter name: " << endl;
 				cin.getline(sName, 30);
-				DeleteContactSname(Kontakt, count, size, sName); //soyada görə kontaktın silinməsi
+				DeleteContactSname(Kontakt, count, size, sName); //deleting contact with surname
 			}
 			break;
-		case '4': //Kontaktın ada, yaşa, nömrəyə görə sıralanması . id-sadəcə olaraq ütün kontaktları ekrana ap edir.
+		case '4': // sort by
 			cout << "Please choose you want to sort by: name (0) , age (1) , surname (2) , phone number (3) or id (4) ?  " << endl;
 			cin >> ContactNumber;
 			switch (ContactNumber)
 			{
 			case 0:
-				qsort(Kontakt, count, sizeof(Contact), compareByName); //kontaktın ada görə sıralanması 
+				qsort(Kontakt, count, sizeof(Contact), compareByName); // name
 				ShowAll(Kontakt, count);
 				break;
 			case 1:
-				qsort(Kontakt, count, sizeof(Contact), compareByAge); //kontaktın yaşa görə sıralanması 
+				qsort(Kontakt, count, sizeof(Contact), compareByAge); // age
 				ShowAll(Kontakt, count);
 				break;
 			case 2:
-				qsort(Kontakt, count, sizeof(Contact), compareBySname); //kontaktın soyada görə sıralanması 
+				qsort(Kontakt, count, sizeof(Contact), compareBySname); // surname
 				ShowAll(Kontakt, count);
 				break;
 			case 3:
-				qsort(Kontakt, count, sizeof(Contact), compareByPhoneNumber); //kontaktın nömrəyə görə sıralanması 
+				qsort(Kontakt, count, sizeof(Contact), compareByPhoneNumber); // phone number
 				ShowAll(Kontakt, count);
 				break;
 			case 4:
-				ShowAll(Kontakt, count);  //kontaktın çap olunması
+				ShowAll(Kontakt, count);  // id
 				break;
 			}
 			break;
-		case '5': //Hansı nömrəli kontaktı istəsən onu çap edir
+		case '5': // Any number you want to print
 			cout << "Enter the number of contact: " << endl;
 			cin >> ContactNumber;
 			cin.ignore();
@@ -129,9 +129,9 @@ int main()
 				Beep(2213, 1000);
 				break;
 			}
-			ShowContact(Kontakt, ContactNumber - 1); //daxil edilən nömrəli kontaktın çap edilməsi 
+			ShowContact(Kontakt, ContactNumber - 1); 
 			break;
-		case '6': //Ada, Sıra nömrəsinə, Soyada və verilmiş 2 (böyük) hərf aralığına görə kontaktı tapan funksiya
+		case '6': // search contact
 			cout << "Enter the number of contact for searching: (0 - Name, 1 - Number, 2 - Surname, 3 - Alphabet, else - break)" << endl;
 			cin >> ContactNumber;
 			cin.ignore();
@@ -140,21 +140,21 @@ int main()
 				char Name[30];
 				cout << "Enter name: " << endl;
 				cin.getline(Name, 30);
-				FindContactFromName(Kontakt, count, Name); //Ada görə kontaktın tapılması
+				FindContactFromName(Kontakt, count, Name); // name
 			}
 			else if (ContactNumber == 1)
 			{
 				char Number[150];
 				cout << "Enter number: " << endl;
 				cin.getline(Number, 150);
-				FindContactFromNumber(Kontakt, count, Number); //nömrəyə görə kontaktın tapılması
+				FindContactFromNumber(Kontakt, count, Number); // phone numer
 			}
 			else if (ContactNumber == 2)
 			{
 				char sName[30];
 				cout << "Enter surname: " << endl;
 				cin.getline(sName, 30);
-				FindContactFromSname(Kontakt, count, sName); //soyada görə kontaktın tapılması
+				FindContactFromSname(Kontakt, count, sName); // surname
 			}
 			else if (ContactNumber == 3)
 			{
@@ -164,7 +164,7 @@ int main()
 				cout << "Enter second (to): " << endl;
 				cin >> b;
 				if (((int)a >= 65) && ((int)b <= 90)) {
-					FindContactFromTo(Kontakt, count, a, b); //Adı, daxil edilən iki böyük hərf aralığında olan adları tapır
+					FindContactFromTo(Kontakt, count, a, b); // choose 2 alphabetand found contact beetwen 2 alphabet
 					break;
 				}
 				else {
@@ -174,7 +174,7 @@ int main()
 				}
 			}
 			break;
-		case '7': //Məlumatları fayla yazmaq üçün
+		case '7': // To write data to file
 		{
 
 			cout << "Enter file name for writing: " << endl;
@@ -186,11 +186,11 @@ int main()
 				Beep(2213, 1000);
 			}
 			else
-				WriteFile(Kontakt, count, ofile); //məlumatın fayla yazılması
+				WriteFile(Kontakt, count, ofile);
 
 		}
 		break;
-		case '8': //Məlumatı fayldan oxumaq üçün
+		case '8': // To read information from a file
 		{
 
 			cout << "Enter file name for reading: " << endl;
@@ -203,7 +203,7 @@ int main()
 			}
 			else
 			{
-				ReadFile(Kontakt, size, count, ifile); //məlumatın fayldan oxunması
+				ReadFile(Kontakt, size, count, ifile);
 			}
 		}
 		break;

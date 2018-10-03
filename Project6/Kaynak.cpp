@@ -2,11 +2,11 @@
 
 
 /*
-Yeni konaktın əlavə edilməsi
+Add new contact
 */
 void AddContact(Contact *&newcontact, int &size, int &count, Contact &NewContact)
 {
-	if (count + 1 >= size) //расширяем массив, если нет пустого места
+	if (count + 1 >= size) //expand the array if there is no empty space
 	{
 		size += EXT;
 		Contact* temp = new Contact[size];
@@ -18,7 +18,7 @@ void AddContact(Contact *&newcontact, int &size, int &count, Contact &NewContact
 		delete[]newcontact;
 		newcontact = temp;
 	}
-	newcontact[count] = NewContact;  //копирование новой структуры
+	newcontact[count] = NewContact;  //copying a new structure
 
 	cout << endl << "New contact has been added:" << endl;
 	ShowContact(newcontact, count);
@@ -26,7 +26,7 @@ void AddContact(Contact *&newcontact, int &size, int &count, Contact &NewContact
 }
 
 /*
-Sıra nömrəsinə görə kontkaktı silir
+Deleted contact to the sequence number
 */
 void DeleteContactNumber(Contact*& newcontact, int & count, int size, int number)
 {
@@ -47,7 +47,7 @@ void DeleteContactNumber(Contact*& newcontact, int & count, int size, int number
 }
 
 /*
-Ada görə kontaktı silir
+Deleted contact to the name
 */
 void DeleteContactName(Contact*& newcontact, int & count, int size, char * Name)
 {
@@ -69,7 +69,7 @@ void DeleteContactName(Contact*& newcontact, int & count, int size, char * Name)
 }
 
 /*
-Soyada görə kontaktı silir
+Deleted contact to the surname
 */
 void DeleteContactSname(Contact*& newcontact, int & count, int size, char * sName)
 {
@@ -91,7 +91,7 @@ void DeleteContactSname(Contact*& newcontact, int & count, int size, char * sNam
 }
 
 /*
-Sıra nömrəsinə görə kontaktı redaktə etmək üçün
+Edit contact to the sequence number
 */
 bool EditContactNumber(Contact* arr, int &count, int number)
 {
@@ -107,7 +107,7 @@ bool EditContactNumber(Contact* arr, int &count, int number)
 }
 
 /*
-Sıra nömrəsinə görə kontaktı tapan funksiya
+Search contact from sequence number
 */
 void FindContactFromNumber(Contact *arr, int count, char * Number)
 {
@@ -122,7 +122,7 @@ void FindContactFromNumber(Contact *arr, int count, char * Number)
 }
 
 /*
-Ada görə kontaktı tapan funksiya
+Search contact from name
 */
 void FindContactFromName(Contact *arr, int count, char * Name)
 {
@@ -137,7 +137,7 @@ void FindContactFromName(Contact *arr, int count, char * Name)
 }
 
 /*
-Soyada görə kontaktı tapan funksiya
+Search contact from surname
 */
 void FindContactFromSname(Contact *arr, int count, char * sName)
 {
@@ -152,7 +152,7 @@ void FindContactFromSname(Contact *arr, int count, char * sName)
 }
 
 /*
-Adı iki böyük hərf aralığında olan adları tapır
+Search contact from which is beetwen 2 alphabet 
 */
 void FindContactFromTo(Contact *arr, int count, char from, char to) {
 
@@ -170,7 +170,7 @@ void FindContactFromTo(Contact *arr, int count, char from, char to) {
 }
 
  /*
- Hansı nömrəli kontaktı istəsən onu çap etmək üçün
+Show any number you want to print it
  */
 void ShowContact(Contact *ptr, int index)
 {
@@ -183,7 +183,7 @@ void ShowContact(Contact *ptr, int index)
 }
 
 /*
-Bütün konaktları çap etmək üçün
+Show all contact
 */
 void ShowAll(Contact* arr, int count)
 {
@@ -192,7 +192,7 @@ void ShowAll(Contact* arr, int count)
 }
 
 /*
-Məlumatları fayla yazmaq üçün
+To write data to file
 */
 void WriteFile(Contact *arr, int count, ofstream & ofile)
 {
@@ -206,7 +206,7 @@ void WriteFile(Contact *arr, int count, ofstream & ofile)
 }
 
 /*
-Məlumatı fayldan oxumaq üçün
+To read information from a file
 */
 void ReadFile(Contact *&newcontacts, int & size, int & count, ifstream & ifile)
 {
@@ -221,7 +221,7 @@ void ReadFile(Contact *&newcontacts, int & size, int & count, ifstream & ifile)
 }
 
 /*
-Kontaktın ada görə sıralanması
+sort by name
 */
 int compareByName(const void *v1, const void *v2) {
 	Contact *c1 = (Contact*)v1;
@@ -230,7 +230,7 @@ int compareByName(const void *v1, const void *v2) {
 }
 
 /*
-Kontaktın soyada görə sıralanması
+sort by surname
 */
 int compareBySname(const void *v1, const void *v2) {
 	Contact *c1 = (Contact*)v1;
@@ -240,7 +240,7 @@ int compareBySname(const void *v1, const void *v2) {
 }
 
 /*
-Kontaktın yaşa görə sıralanması
+sort by phone number
 */
 int compareByPhoneNumber(const void *v1, const void *v2) {
 	Contact *c1 = (Contact*)v1;
@@ -249,7 +249,7 @@ int compareByPhoneNumber(const void *v1, const void *v2) {
 }
 
 /*
-Kontaktın nömrəyə görə sıralanması
+sort by age
 */
 int compareByAge(const void *v1, const void *v2) {
 	Contact *c1 = (Contact*)v1;
